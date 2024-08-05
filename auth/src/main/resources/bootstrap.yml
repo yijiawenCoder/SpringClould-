@@ -1,7 +1,7 @@
 server:
   port: 4000
 spring:
-#redis配置
+  #redis配置
   redis:
     host: 127.0.0.1
     port: 6379
@@ -31,6 +31,17 @@ spring:
 
 
 
+# 接口文档配置
+knife4j:
+  enable: true
+  openapi:
+    title: "接口文档"
+    version: 1.0
+    group:
+      default:
+        api-rule: package
+        api-rule-resources:
+          - com.chinasoft.controller
 
 
 
