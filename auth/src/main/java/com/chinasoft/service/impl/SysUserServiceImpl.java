@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
+import com.chinasoft.common.mq.reject.ApplyNotify;
+import com.chinasoft.common.mq.reject.impl.ApplyNotifyImpl;
 import com.chinasoft.common.util.PageUtils;
 import com.chinasoft.common.util.R;
 import com.chinasoft.common.util.RedisUtil;
@@ -13,11 +15,14 @@ import com.chinasoft.dto.UserLoginRequest;
 import com.chinasoft.entity.SysUser;
 import com.chinasoft.mapper.SysUserMapper;
 import com.chinasoft.service.SysUserService;
+import com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -36,6 +41,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser>
     PasswordEncoder passwordEncoder;
     @Resource
     RedisUtil redisUtil;
+    @Resource
+    private ApplyNotify applyNotify;
+
+
 
     @Override
     public List<SysUser> permission(UserLoginRequest userLoginRequest) {
@@ -44,12 +53,21 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser>
         List<SysUser> sysUsers = userMapper.selectList(queryWrapper);
         return sysUsers;
     }
+    //不知道为什么注入失败
 
     @Override
     public R register(SysUser user) {
         user.setUserPass(passwordEncoder.encode(user.getUserPass()));
         user.setOptrdate(new Timestamp(new java.util.Date().getTime()));
         userMapper.insert(user);
+
+
+        Map<String,String>params = new HashMap<>();
+        params.put("mobile",user.getMobile());
+        params.put("info","*******注册成功********");
+        Gson gson = new Gson();
+
+        applyNotify.send(gson.toJson(params),10);
                   return R.ok();
     }
 

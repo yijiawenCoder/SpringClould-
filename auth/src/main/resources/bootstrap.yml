@@ -2,12 +2,12 @@ server:
   port: 4000
 spring:
   #rabbitmq配置
-
   rabbitmq:
-    addresses: 127.0.0.1:5672
     username: guest
     password: guest
     dynamic: true
+    host: 127.0.0.1
+    port: 5672
   #redis配置
   redis:
     host: 127.0.0.1
@@ -35,6 +35,10 @@ spring:
       validation-query: SELECT 'x'
       max-pool-prepared-statement-per-connection-size: 20
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  profiles:
+    active: dev
+    include:
+      - rabbitmq
 
 
 

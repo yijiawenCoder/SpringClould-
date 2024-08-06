@@ -5,6 +5,8 @@ import com.chinasoft.common.mq.reject.ApplyNotify;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -24,12 +26,12 @@ public class ApplyNotifyImpl extends ApplyNotify {
     @PostConstruct
     public void init(){
         //使用频道捆绑交换机和队列
-        DirectExchange directExchange= new DirectExchange(MqConfig.REJECT_APPLY_NOTIFY_EXCHANGE_NAME);
+        DirectExchange exchange= new DirectExchange(MqConfig.REJECT_APPLY_NOTIFY_EXCHANGE_NAME);
         //开启延时
-        directExchange.setDelayed(true);
+        exchange.setDelayed(true);
         Queue queue = new Queue(MqConfig.REJECT_APPLY_NOTIFY_QUEUE_NAME);
-        Binding binding = BindingBuilder.bind(queue).to(directExchange).withQueueName();
-        amqpAdmin.declareExchange(directExchange);
+        Binding binding = BindingBuilder.bind(queue).to(exchange).withQueueName();
+        amqpAdmin.declareExchange(exchange);
         amqpAdmin.declareQueue(queue);
         amqpAdmin.declareBinding(binding);
     }
@@ -56,7 +58,7 @@ public class ApplyNotifyImpl extends ApplyNotify {
     }
 
 
-    @RabbitListener(queues = MqConfig.REJECT_APPLY_NOTIFY_EXCHANGE_NAME)
+    @RabbitListener(queues = MqConfig.REJECT_APPLY_NOTIFY_QUEUE_NAME)
     public void onMessage(String msg){
         receive(msg);
     }

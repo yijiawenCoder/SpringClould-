@@ -1,6 +1,7 @@
 package com.chinasoft.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.chinasoft.common.mq.reject.ApplyNotify;
 import com.chinasoft.common.util.PageUtils;
 import com.chinasoft.common.util.R;
 import com.chinasoft.dto.UserLoginRequest;
@@ -17,9 +18,10 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController {
     @Resource
-    PasswordEncoder passwordEncoder;
+   private PasswordEncoder passwordEncoder;
     @Resource
-    SysUserService userService;
+    private  SysUserService userService;
+
     @PostMapping("/login")
     public R login(@RequestBody UserLoginRequest userLoginRequest){
         //能否登录
