@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 public abstract class ApplyNotify {
-    public static final MyLog _log =MyLog.getLog(ApplyNotify.class);
+    protected static final MyLog _log =MyLog.getLog(ApplyNotify.class);
     //直接发送
     public abstract void send (String msg);
     //延时发送
