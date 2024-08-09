@@ -267,21 +267,21 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
         <!--spring cloud alibaba-->
-          <dependency>
-              <groupId>com.alibaba.cloud</groupId>
-              <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-              <exclusions>
-                  <exclusion>
-                      <groupId>org.springframework.cloud</groupId>
-                      <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-                  </exclusion>
-              </exclusions>
-          </dependency>
-<!--          &lt;!&ndash;配置中心客户端&ndash;&gt;-->
-          <dependency>
-              <groupId>com.alibaba.cloud</groupId>
-              <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-          </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--          &lt;!&ndash;配置中心客户端&ndash;&gt;-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -568,90 +568,90 @@
         </plugins>
     </build>
     <!--    <build>-->
-<!--        <finalName>${project.name}</finalName>-->
-<!--        <pluginManagement>-->
-<!--            <plugins>-->
-<!--                <plugin>-->
-<!--                    <groupId>org.springframework.boot</groupId>-->
-<!--                    <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--                    <version>${spring-boot.version}</version>-->
-<!--                    <configuration>-->
-<!--                        <finalName>${project.build.finalName}</finalName>-->
-<!--                        <layers>-->
-<!--                            <enabled>true</enabled>-->
-<!--                        </layers>-->
-<!--                    </configuration>-->
-<!--                    <executions>-->
-<!--                        <execution>-->
-<!--                            <goals>-->
-<!--                                <goal>repackage</goal>-->
-<!--                            </goals>-->
-<!--                        </execution>-->
-<!--                    </executions>-->
-<!--                </plugin>-->
-<!--                <plugin>-->
-<!--                    <groupId>io.fabric8</groupId>-->
-<!--                    <artifactId>docker-maven-plugin</artifactId>-->
-<!--                    <version>${docker.plugin.version}</version>-->
-<!--                    <configuration>-->
-<!--                        &lt;!&ndash; Docker Remote Api&ndash;&gt;-->
-<!--                        <dockerHost>${docker.host}</dockerHost>-->
-<!--                        &lt;!&ndash; Docker 镜像私服&ndash;&gt;-->
-<!--                        <registry>${docker.registry}</registry>-->
-<!--                        &lt;!&ndash; 认证信息&ndash;&gt;-->
-<!--                        <authConfig>-->
-<!--                            <push>-->
-<!--                                <username>${docker.username}</username>-->
-<!--                                <password>${docker.password}</password>-->
-<!--                            </push>-->
-<!--                        </authConfig>-->
-<!--                        <images>-->
-<!--                            <image>-->
-<!--                                &lt;!&ndash; 镜像名称： 172.17.0.111/library/pig-gateway:2.6.3&ndash;&gt;-->
-<!--                                <name>${docker.registry}/${docker.namespace}/${project.name}:${project.version}</name>-->
-<!--                                <build>-->
-<!--                                    <dockerFile>${project.basedir}/Dockerfile</dockerFile>-->
-<!--                                </build>-->
-<!--                            </image>-->
-<!--                        </images>-->
-<!--                    </configuration>-->
-<!--                </plugin>-->
-<!--            </plugins>-->
-<!--        </pluginManagement>-->
-<!--        <plugins>-->
-<!--            &lt;!&ndash;打包jar 与git commit 关联插件&ndash;&gt;-->
-<!--            <plugin>-->
-<!--                <groupId>io.github.git-commit-id</groupId>-->
-<!--                <artifactId>git-commit-id-maven-plugin</artifactId>-->
-<!--                <version>${git.commit.plugin}</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>get-the-git-infos</id>-->
-<!--                        <goals>-->
-<!--                            <goal>revision</goal>-->
-<!--                        </goals>-->
-<!--                        <phase>initialize</phase>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <failOnNoGitDirectory>false</failOnNoGitDirectory>-->
-<!--                    <generateGitPropertiesFile>true</generateGitPropertiesFile>-->
-<!--                    &lt;!&ndash;因为项目定制了jackson的日期时间序列化/反序列化格式，因此这里要进行配置,不然通过management.info.git.mode=full进行完整git信息监控时会存在问题&ndash;&gt;-->
-<!--                    <dateFormat>yyyy-MM-dd HH:mm:ss</dateFormat>-->
-<!--                    <includeOnlyProperties>-->
-<!--                        <includeOnlyProperty>^git.build.(time|version)$</includeOnlyProperty>-->
-<!--                        <includeOnlyProperty>^git.commit.(id|message|time).*$</includeOnlyProperty>-->
-<!--                    </includeOnlyProperties>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--            &lt;!&ndash;代码格式插件，默认使用spring 规则&ndash;&gt;-->
-<!--            <plugin>-->
-<!--                <groupId>io.spring.javaformat</groupId>-->
-<!--                <artifactId>spring-javaformat-maven-plugin</artifactId>-->
-<!--                <version>${spring.checkstyle.plugin}</version>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
+    <!--        <finalName>${project.name}</finalName>-->
+    <!--        <pluginManagement>-->
+    <!--            <plugins>-->
+    <!--                <plugin>-->
+    <!--                    <groupId>org.springframework.boot</groupId>-->
+    <!--                    <artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--                    <version>${spring-boot.version}</version>-->
+    <!--                    <configuration>-->
+    <!--                        <finalName>${project.build.finalName}</finalName>-->
+    <!--                        <layers>-->
+    <!--                            <enabled>true</enabled>-->
+    <!--                        </layers>-->
+    <!--                    </configuration>-->
+    <!--                    <executions>-->
+    <!--                        <execution>-->
+    <!--                            <goals>-->
+    <!--                                <goal>repackage</goal>-->
+    <!--                            </goals>-->
+    <!--                        </execution>-->
+    <!--                    </executions>-->
+    <!--                </plugin>-->
+    <!--                <plugin>-->
+    <!--                    <groupId>io.fabric8</groupId>-->
+    <!--                    <artifactId>docker-maven-plugin</artifactId>-->
+    <!--                    <version>${docker.plugin.version}</version>-->
+    <!--                    <configuration>-->
+    <!--                        &lt;!&ndash; Docker Remote Api&ndash;&gt;-->
+    <!--                        <dockerHost>${docker.host}</dockerHost>-->
+    <!--                        &lt;!&ndash; Docker 镜像私服&ndash;&gt;-->
+    <!--                        <registry>${docker.registry}</registry>-->
+    <!--                        &lt;!&ndash; 认证信息&ndash;&gt;-->
+    <!--                        <authConfig>-->
+    <!--                            <push>-->
+    <!--                                <username>${docker.username}</username>-->
+    <!--                                <password>${docker.password}</password>-->
+    <!--                            </push>-->
+    <!--                        </authConfig>-->
+    <!--                        <images>-->
+    <!--                            <image>-->
+    <!--                                &lt;!&ndash; 镜像名称： 172.17.0.111/library/pig-gateway:2.6.3&ndash;&gt;-->
+    <!--                                <name>${docker.registry}/${docker.namespace}/${project.name}:${project.version}</name>-->
+    <!--                                <build>-->
+    <!--                                    <dockerFile>${project.basedir}/Dockerfile</dockerFile>-->
+    <!--                                </build>-->
+    <!--                            </image>-->
+    <!--                        </images>-->
+    <!--                    </configuration>-->
+    <!--                </plugin>-->
+    <!--            </plugins>-->
+    <!--        </pluginManagement>-->
+    <!--        <plugins>-->
+    <!--            &lt;!&ndash;打包jar 与git commit 关联插件&ndash;&gt;-->
+    <!--            <plugin>-->
+    <!--                <groupId>io.github.git-commit-id</groupId>-->
+    <!--                <artifactId>git-commit-id-maven-plugin</artifactId>-->
+    <!--                <version>${git.commit.plugin}</version>-->
+    <!--                <executions>-->
+    <!--                    <execution>-->
+    <!--                        <id>get-the-git-infos</id>-->
+    <!--                        <goals>-->
+    <!--                            <goal>revision</goal>-->
+    <!--                        </goals>-->
+    <!--                        <phase>initialize</phase>-->
+    <!--                    </execution>-->
+    <!--                </executions>-->
+    <!--                <configuration>-->
+    <!--                    <failOnNoGitDirectory>false</failOnNoGitDirectory>-->
+    <!--                    <generateGitPropertiesFile>true</generateGitPropertiesFile>-->
+    <!--                    &lt;!&ndash;因为项目定制了jackson的日期时间序列化/反序列化格式，因此这里要进行配置,不然通过management.info.git.mode=full进行完整git信息监控时会存在问题&ndash;&gt;-->
+    <!--                    <dateFormat>yyyy-MM-dd HH:mm:ss</dateFormat>-->
+    <!--                    <includeOnlyProperties>-->
+    <!--                        <includeOnlyProperty>^git.build.(time|version)$</includeOnlyProperty>-->
+    <!--                        <includeOnlyProperty>^git.commit.(id|message|time).*$</includeOnlyProperty>-->
+    <!--                    </includeOnlyProperties>-->
+    <!--                </configuration>-->
+    <!--            </plugin>-->
+    <!--            &lt;!&ndash;代码格式插件，默认使用spring 规则&ndash;&gt;-->
+    <!--            <plugin>-->
+    <!--                <groupId>io.spring.javaformat</groupId>-->
+    <!--                <artifactId>spring-javaformat-maven-plugin</artifactId>-->
+    <!--                <version>${spring.checkstyle.plugin}</version>-->
+    <!--            </plugin>-->
+    <!--        </plugins>-->
+    <!--    </build>-->
 
     <profiles>
         <profile>

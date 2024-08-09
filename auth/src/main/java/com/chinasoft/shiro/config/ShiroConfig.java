@@ -64,10 +64,10 @@ public class ShiroConfig {
         filters.put("oauth2", new OAuth2Filter());
         shiroFilter.setFilters(filters);
         Map<String, String> filterMap = new LinkedHashMap<>();
-       filterMap.put("/user/login", "anon");
-       filterMap.put("/user/register", "anon");
-       filterMap.put("/user/**", "anon");
-       filterMap.put("/**", "oauth2");
+        filterMap.put("/user/login", "anon");
+        filterMap.put("/user/register", "anon");
+        filterMap.put("/user/**", "anon");
+        filterMap.put("/**", "oauth2");
         shiroFilter.setFilterChainDefinitionMap(filterMap);
         return shiroFilter;
     }

@@ -31,19 +31,19 @@ spring:
             allowedHeaders: "*"
             allow-credentials: true
             allowedMethods:
-             - GET
-             - POST
-             - DELETE
-             - PUT
-             - OPTIONS
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTIONS
       routes:
-       - id: auth
-         uri: lb://auth
-         predicates:
-          - Path=/auth/**
+        - id: auth
+          uri: lb://auth
+          predicates:
+            - Path=/auth/**
 
-         #filters:
-          #- StripPrefix=1
+            #filters:
+            #- StripPrefix=1
       discovery:
         locator:
           enabled: true

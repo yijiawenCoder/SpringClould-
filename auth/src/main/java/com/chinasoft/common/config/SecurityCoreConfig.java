@@ -66,3 +66,4 @@ public RedisTemplate redisTemplate(RedisConnectionFactory redisConnectionFactory
     return stringRedisTemplate;
 }*/
 }
+

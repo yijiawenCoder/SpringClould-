@@ -12,6 +12,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="gatewa" target="1.8" />
+      <module name="gomoney-monitor" target="1.8" />
+      <module name="monitor" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
