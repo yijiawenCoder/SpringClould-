@@ -70,5 +70,12 @@ knife4j:
           - com.chinasoft.controller
 
 
+feign:
+  client:
+    config:
+      feignName:
+        connect-timeout: 50000
+        read-timeout: 50000
+
 
 
