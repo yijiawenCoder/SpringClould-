@@ -6,7 +6,9 @@ import com.chinasoft.common.util.PageUtils;
 import com.chinasoft.common.util.R;
 import com.chinasoft.dto.UserLoginRequest;
 import com.chinasoft.entity.SysUser;
+import com.chinasoft.feign.BizFeignService;
 import com.chinasoft.service.SysUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +23,8 @@ public class UserController {
    private PasswordEncoder passwordEncoder;
     @Resource
     private  SysUserService userService;
+    @Resource
+    private BizFeignService bizFeignService;
 
     @PostMapping("/login")
     public R login(@RequestBody UserLoginRequest userLoginRequest){
@@ -42,5 +46,12 @@ public class UserController {
     public IPage<SysUser> getUserList (@RequestParam Map<String,Object> params){
 
         return   userService.getUsers(params);
+    }
+
+    @PostMapping("/test")
+    public R test(@RequestParam  Map<String,Object> params){
+        bizFeignService.add(params);
+        return R.ok();
+
     }
 }

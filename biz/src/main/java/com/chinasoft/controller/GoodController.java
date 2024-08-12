@@ -22,7 +22,7 @@ public class GoodController {
     @PostMapping("/add")
     public R add(@RequestParam Map<String, Object> param ) {
         Good good = new Good();
-        good.setGname( param.get("gname").toString());
+        good.setGname( param.get("name").toString());
         goodService.insertGood(good);
         return R.ok();
     }

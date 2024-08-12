@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
 //biz所有服务都只能在这一个类里面
 
-@FeignClient(value = "/biz",configuration = FeignHeaderInterceptor.class,fallback = BizFeignServiceFallback.class)
+@FeignClient(value = "biz",
+        configuration = FeignHeaderInterceptor.class,
+        fallback = BizFeignServiceFallback.class)
 public interface BizFeignService {
 
     @PostMapping("/biz/good/add")
