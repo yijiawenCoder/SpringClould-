@@ -19,6 +19,8 @@ public class GateWayApplication{
         return builder.routes()
                 .route("auth", r -> r.path("/auth/**")
                         .uri("lb://auth"))
+                .route("biz", r -> r.path("/biz/**")
+                        .uri("lb://biz"))
 
                 .build();
     }

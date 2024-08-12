@@ -84,11 +84,7 @@
                     <artifactId>springfox-swagger2</artifactId>
                     <version>${swagger.fox.version}</version>
                 </dependency>-->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>${swagger.fox.version}</version>
-        </dependency>
+
         <!--        <dependency>
                     <groupId>io.swagger</groupId>
                     <artifactId>swagger-annotations</artifactId>
@@ -192,6 +188,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
@@ -231,6 +228,8 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -246,6 +245,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 

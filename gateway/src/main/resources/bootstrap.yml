@@ -41,6 +41,11 @@ spring:
           uri: lb://auth
           predicates:
             - Path=/auth/**
+        - id: biz
+          uri: lb://biz
+          predicates:
+            - Path=/biz/**
+
 
             #filters:
             #- StripPrefix=1
