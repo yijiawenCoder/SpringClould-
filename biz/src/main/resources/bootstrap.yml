@@ -58,6 +58,7 @@ mybatis-plus:
     cache-enabled: true
     map-underscore-to-camel-case: true
 
+
 knife4j:
   enable: true
   openapi:
@@ -68,7 +69,22 @@ knife4j:
         api-rule: package
         api-rule-resources:
           - com.chinasoft.controller
+#seata配置
+seata:
+  application-id: ${spring.application.name}
+  tx-service-group: default
 
+  service:
+    vgroup-mapping:
+        default: default
+        grouplist:
+          default: 127.0.0.1:8091
+
+logging:
+  level:
+    org.springframework.web: INFO
+    com.chinasoft.mapper: debug
+    io.seata: debug
 
 
 

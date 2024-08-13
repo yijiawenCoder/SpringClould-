@@ -8,6 +8,7 @@ import com.chinasoft.dto.UserLoginRequest;
 import com.chinasoft.entity.SysUser;
 import com.chinasoft.feign.BizFeignService;
 import com.chinasoft.service.SysUserService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +48,7 @@ public class UserController {
 
         return   userService.getUsers(params);
     }
-
+@GlobalTransactional
     @PostMapping("/test")
     public R test(@RequestParam  Map<String,Object> params){
         bizFeignService.add(params);
