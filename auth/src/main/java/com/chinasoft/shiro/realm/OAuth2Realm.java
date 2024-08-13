@@ -43,7 +43,7 @@ public class OAuth2Realm extends AuthorizingRealm {
         if(principals.getPrimaryPrincipal() instanceof SysUser){
             SysUser user = (SysUser)principals.getPrimaryPrincipal();
             SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-          //  info.setStringPermissions(user.getPermsSet());
+            info.setStringPermissions(user.getPermissions());
             return info;
         }
         else{

@@ -9,6 +9,7 @@ import org.yaml.snakeyaml.events.Event;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * 系统管理员
@@ -70,4 +71,8 @@ public class SysUser implements Serializable {
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+
+    @TableField(exist = false)
+    private Set<String> permissions;
+
 }

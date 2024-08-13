@@ -22,10 +22,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author 26510
@@ -45,7 +42,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser>
     private ApplyNotify applyNotify;
 
 
-
     @Override
     public List<SysUser> permission(UserLoginRequest userLoginRequest) {
         QueryWrapper<SysUser> queryWrapper = new QueryWrapper<>();
@@ -62,13 +58,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser>
         userMapper.insert(user);
 
 
-        Map<String,String>params = new HashMap<>();
-        params.put("mobile",user.getMobile());
-        params.put("info","*******注册成功********");
+        Map<String, String> params = new HashMap<>();
+        params.put("mobile", user.getMobile());
+        params.put("info", "*******注册成功********");
         Gson gson = new Gson();
 
-        applyNotify.send(gson.toJson(params),10);
-                  return R.ok();
+        applyNotify.send(gson.toJson(params), 10);
+        return R.ok();
     }
 
     @Override
@@ -87,7 +83,11 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser>
                 }
             }
         }
+        //shiro授权
 
+        Set<String>permissions =new HashSet<>();
+        //在redis捆绑之前把权限放在permissions里面
+        user.setPermissions(permissions);
 
         //捆绑登陆人信息和id
         redisUtil.set(token, user.getUserId(), 3600);
@@ -98,12 +98,12 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser>
     @Override
     public IPage<SysUser> getUsers(Map<String, Object> params) {
         QueryWrapper<SysUser> queryWrapper = new QueryWrapper<>();
-       queryWrapper.like("user_name",params.get("userName"));
+        queryWrapper.like("user_name", params.get("userName"));
         int current = Integer.parseInt(params.get("page").toString());
         int size = Integer.parseInt(params.get("limit").toString());
-       Page<SysUser> page =new Page<>(current,size);
+        Page<SysUser> page = new Page<>(current, size);
 
-        return userMapper.selectPage(page,queryWrapper);
+        return userMapper.selectPage(page, queryWrapper);
     }
 }
 
