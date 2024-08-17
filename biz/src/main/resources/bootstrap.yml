@@ -7,6 +7,15 @@ spring:
     name: biz
   #接入nacos
   cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+      scg:
+        fallback:
+          mode: response
+          response-body: error request
+          response-status: 426
+      enabled: true
     nacos:
       discovery:
         server-addr: ${NACOS_HOST:127.0.0.1}:${NACOS_PORT:8848}
