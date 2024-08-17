@@ -17,6 +17,15 @@ spring:
         min-idle: 1
         max-idle: 100
   cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8086
+      scg:
+        fallback:
+          mode: response
+          response-body: error request
+          response-status: 426
+      enabled: true
     nacos:
       discovery:
         server-addr: ${NACOS_HOST:127.0.0.1}:${NACOS_PORT:8848}
