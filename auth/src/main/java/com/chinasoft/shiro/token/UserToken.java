@@ -3,7 +3,7 @@ package com.chinasoft.shiro.token;
 
 import com.chinasoft.shiro.virtual.VirtualType;
 import org.apache.shiro.authc.UsernamePasswordToken;
-
+//token
 public class UserToken extends UsernamePasswordToken {
     private VirtualType virtualType;
 
